@@ -106,6 +106,10 @@ main {
 
 /* Responsive design for Poco M3 (screen width up to 600px) */
 @media screen and (max-width: 600px) {
+    .head{
+        display: flex;
+        flex-flow: row wrap ;
+    }
     header ul {
         flex-direction: row; /* Ensure items are in a row */
         gap: 10px;
@@ -127,7 +131,7 @@ main {
 
     iframe {
         width: 100%;
-        height: auto;
+        height: 30px;
         margin: 0;
         padding: 0;
     }
