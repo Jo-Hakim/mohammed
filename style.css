@@ -51,6 +51,22 @@ main {
 .page {
     display: none;
 }
+#whats:hover {
+    color: #25D366;
+    background-color: white;
+}
+
+#face:hover {
+    color: #1877F2;
+    background-color: white;
+    border-radius: 50%;
+}
+
+#insta:hover {
+    background: linear-gradient(to left, #f9ce34, #ee2a7b, #6228d7);
+    color: white;
+}
+
 
 /* Responsive design for Nokia C3 (screen width up to 77mm) */
 @media screen and (max-width: 77mm) {
