@@ -36,6 +36,9 @@ header ul li a {
     padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 header ul li a.active {
@@ -86,11 +89,14 @@ main {
     .thelist{
         display: flex;
         overflow-x: scroll;
+
     }
 
     header ul li a {
         padding: 5px 10px;
         font-size: 12px;
+        display: flex;
+        flex-flow: row nowrap;
     }
 
     main {
@@ -124,6 +130,8 @@ main {
     header ul li a {
         padding: 8px 15px;
         font-size: 14px;
+        display: flex;
+        flex-flow: row nowrap;
     }
 
     main {
