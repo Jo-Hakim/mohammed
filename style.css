@@ -1,3 +1,5 @@
+/* Existing styles */
+
 body {
     font-family: "Noto Kufi Arabic", sans-serif;
     background-color: white;
@@ -20,6 +22,11 @@ header ul {
     gap: 20px;
     margin: 0;
     padding: 0;
+    flex-wrap: wrap; /* Allow wrapping of list items */
+}
+
+header ul li {
+    margin: 0;
 }
 
 header ul li a {
@@ -51,6 +58,7 @@ main {
 .page {
     display: none;
 }
+
 #whats:hover {
     color: #25D366;
     background-color: white;
@@ -67,11 +75,10 @@ main {
     color: white;
 }
 
-
 /* Responsive design for Nokia C3 (screen width up to 77mm) */
 @media screen and (max-width: 77mm) {
     header ul {
-        flex-direction: column;
+        flex-direction: row; /* Ensure items are in a row */
         gap: 5px;
         margin: 5px;
     }
@@ -93,7 +100,7 @@ main {
 /* Responsive design for Poco M3 (screen width up to 600px) */
 @media screen and (max-width: 600px) {
     header ul {
-        flex-direction: column;
+        flex-direction: row; /* Ensure items are in a row */
         gap: 10px;
         margin: 10px;
     }
