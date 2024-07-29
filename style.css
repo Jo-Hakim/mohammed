@@ -1,6 +1,6 @@
 body {
     font-family: "Noto Kufi Arabic", sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
     color: #333;
     margin: 0;
     padding: 0;
@@ -32,7 +32,7 @@ header ul li a {
 }
 
 header ul li a.active {
-    background-color: #ccc; /* Gray color when active */
+    background-color: red; /* Gray color when active */
     color: #000;
 }
 
