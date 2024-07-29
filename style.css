@@ -81,6 +81,7 @@ main {
         flex-direction: row; /* Ensure items are in a row */
         gap: 5px;
         margin: 5px;
+        overflow-x: scroll;
     }
 
     header ul li a {
