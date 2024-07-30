@@ -78,18 +78,22 @@ main {
     color: white;
 }
 
+.img-container {
+    display: flex;
+    justify-content: center;
+}
+
 /* Responsive design for Nokia C3 (screen width up to 77mm) */
 @media screen and (max-width: 77mm) {
     header ul {
         flex-direction: row; /* Ensure items are in a row */
         gap: 5px;
         margin: 5px;
-        
     }
-    .thelist{
+
+    .thelist {
         display: flex;
         overflow-x: scroll;
-
     }
 
     header ul li a {
@@ -113,14 +117,21 @@ main {
         margin: 0;
         padding: 0;
     }
+
+    .img-container img {
+        width: 100%; /* Ensure image fits within the container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: none; /* Prevent automatic height adjustments */
+    }
 }
 
 /* Responsive design for Poco M3 (screen width up to 600px) */
 @media screen and (max-width: 600px) {
-    .head{
+    .head {
         display: flex;
-        flex-flow: row wrap ;
+        flex-flow: row wrap;
     }
+
     header ul {
         flex-direction: row; /* Ensure items are in a row */
         gap: 10px;
@@ -148,8 +159,15 @@ main {
         margin: 0;
         padding: 0;
     }
-    .thelist{
+
+    .thelist {
         display: flex;
         overflow-x: scroll;
+    }
+
+    .img-container img {
+        width: 100%; /* Ensure image fits within the container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: none; /* Prevent automatic height adjustments */
     }
 }
