@@ -47,7 +47,7 @@ header ul li a.active {
 }
 
 header ul li a:hover {
-    background-color: #f0f0f0; /* Light gray on hover */
+    background-color: blue; /* Light gray on hover */
 }
 
 header h1 {
