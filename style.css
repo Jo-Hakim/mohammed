@@ -1,5 +1,7 @@
 /* Existing styles */
-
+.page{
+    height: 100vh;
+}
 body {
     font-family: "Noto Kufi Arabic", sans-serif;
     background-color: white;
@@ -83,7 +85,7 @@ main {
     justify-content: center;
 }
 #article{
-    background-image: url(https://tse2.explicit.bing.net/th?id=OIP.uyi1Q5l2H8Zf9APJQplJfQHaEK&pid=Api&P=0&h=220);
+    background-image: url();
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
