@@ -14,3 +14,4 @@ function showContent(id) {
 
 // Optionally, show the default page on load
 document.addEventListener('DOMContentLoaded', () => showContent('home'));
+
