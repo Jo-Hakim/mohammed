@@ -394,11 +394,14 @@
                         </p>
                     </li>
                 </ul>
-                <div id="newArticle"></div>
-                <h1 style="display: block;">إضافة مقالة جديدة</h1>
-                <center><input type="text" id="articleTitle" placeholder="عنوان المقالة" style="display: block; width: 600px;height: 30px;"></center>
-            <center><textarea id="articleBody" placeholder="محتوى المقالة" style="display: block;width: 600px;height: 300px;margin-top: 30px;"></textarea></center>
-                <center><button onclick="addArticle()" style="background-color: red;color: white;width: 100px;border-radius: 20%;height: 30px;">إضافة المقالة</button></center>
+                <div id="articles-list"></div>
+                <form id="article-form" style="display: flex;flex-flow: nowrap column ; align-items: center;gap: 20px;">
+                    <h1>إضافة مقال</h1>
+                    <input type="text" id="article-title" placeholder="عنوان المقال" style="height:50px ;width: 600px">
+                    <textarea id="article-body" placeholder="نص المقال" style="height: 500px;width: 600px;"></textarea>
+                    <button type="submit" style="color: white;background-color: red;height: 50px;width: 90px;border-radius: 20%;">إضافة مقال</button>
+                </form>
+               
             </div>
         </div>
         <div id="contact" class="page" style="display:none;background-image: url('https://tse2.mm.bing.net/th?id=OIP.jAVtSC02UZqAjZ2he3d5iQHaFW&pid=Api&P=0&h=220');background-size: cover;background-repeat: no-repeat;background-position: center;">
@@ -430,60 +433,5 @@
     </main>
     <script src="script.js"></script>
     <script src="server.js"></script>
-    <script>
-        function addArticle() {
-            var title = document.getElementById('articleTitle').value;
-            var body = document.getElementById('articleBody').value;
-
-            if (title && body) {
-                var article = { title: title, body: body };
-
-                // Send the article to the server
-                fetch('http://your-server-address:3000/articles', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(article),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    loadArticles(); // Reload articles to reflect the newly added one
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-
-                // Clear the input fields
-                document.getElementById('articleTitle').value = '';
-                document.getElementById('articleBody').value = '';
-            } else {
-                alert('يرجى إدخال عنوان المقالة ومحتوى المقالة.');
-            }
-        }
-
-        function loadArticles() {
-            // Fetch articles from the server
-            fetch('http://your-server-address:3000/articles')
-                .then(response => response.json())
-                .then(articles => {
-                    var newArticle = document.getElementById('newArticle');
-                    newArticle.innerHTML = ''; // Clear previous articles
-                    articles.forEach(function(article) {
-                        var newTitle = document.createElement('h3');
-                        var newBody = document.createElement('p');
-                        newTitle.textContent = article.title;
-                        newBody.textContent = article.body;
-                        newArticle.appendChild(newTitle);
-                        newArticle.appendChild(newBody);
-                    });
-                });
-        }
-
-        window.onload = function() {
-            loadArticles(); // Load articles on page load
-        };
-    </script>
 </body>
 </html>
