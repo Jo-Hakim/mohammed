@@ -1,42 +1,58 @@
-const express = require('express');
-const fs = require('fs');
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const path = require("path");
+
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
+// Middleware
+app.use(bodyParser.json());
 
-// Load articles from a JSON file
-function loadArticles() {
-    try {
-        return JSON.parse(fs.readFileSync('articles.json', 'utf-8'));
-    } catch (error) {
-        return [];
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname)));
+
+// Route to serve the HTML file
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "hakim.html"));
+});
+
+// Store articles in a JSON file
+const articlesFile = path.join(__dirname, "package.json");
+
+app.get("/articles", (req, res) => {
+  fs.readFile(articlesFile, (err, data) => {
+    if (err) {
+      return res.status(500).send("Error reading articles.");
     }
-}
 
-// Save articles to a JSON file
-function saveArticles(articles) {
-    fs.writeFileSync('articles.json', JSON.stringify(articles, null, 2));
-}
-
-// Endpoint to get articles
-app.get('/articles', (req, res) => {
-    const articles = loadArticles();
+    const articles = JSON.parse(data || "[]");
     res.json(articles);
+  });
 });
 
-// Endpoint to add a new article
-app.post('/articles', (req, res) => {
-    const articles = loadArticles();
-    const newArticle = {
-        title: req.body.title,
-        body: req.body.body,
-    };
+app.post("/add-article", (req, res) => {
+  const newArticle = req.body;
+
+  fs.readFile(articlesFile, (err, data) => {
+    if (err) {
+      return res.status(500).send("Error reading articles.");
+    }
+
+    const articles = JSON.parse(data || "[]");
     articles.push(newArticle);
-    saveArticles(articles);
-    res.json(newArticle);
+
+    fs.writeFile(articlesFile, JSON.stringify(articles, null, 2), (err) => {
+      if (err) {
+        return res.status(500).send("Error saving article.");
+      }
+
+      res.json({ success: true });
+    });
+  });
 });
 
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
