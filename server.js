@@ -9,17 +9,18 @@ const PORT = 3000;
 // Middleware
 app.use(bodyParser.json());
 
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname)));
+// Serve static files from the same directory as server.js
+app.use(express.static(__dirname));
 
 // Route to serve the HTML file
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "hakim.html"));
 });
 
-// Store articles in a JSON file
-const articlesFile = path.join(__dirname, "package.json");
+// Path for articles JSON file
+const articlesFile = path.join(__dirname, "articles.json");
 
+// Get all articles
 app.get("/articles", (req, res) => {
   fs.readFile(articlesFile, (err, data) => {
     if (err) {
@@ -31,6 +32,7 @@ app.get("/articles", (req, res) => {
   });
 });
 
+// Add a new article
 app.post("/add-article", (req, res) => {
   const newArticle = req.body;
 
