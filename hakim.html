@@ -394,21 +394,11 @@
                         </p>
                     </li>
                 </ul>
-                <ul id="ul">
-                    <li id="newArticle">
-                        <!-- New articles will be added here -->
-                    </li>
-                </ul>
-                <h2>أضف مقالتك</h2>
-
-                <!-- Text input for article title -->
-                <input type="text" id="articleTitle" placeholder="أدخل عنوان المقال" style="width: 100%; margin-bottom: 10px;">
-
-                <!-- Text input for article body -->
-                <textarea id="articleBody" placeholder="أدخل نص المقال" style="width: 100%; height: 100px; margin-bottom: 10px;"></textarea>
-
-                <!-- Button to add the article -->
-                <button onclick="addArticle()" style="background-color: blueviolet; color: white; padding: 10px 20px; border: none; border-radius: 5px;">أضف المقال</button>
+                <div id="newArticle"></div>
+                <h1 style="display: block;">إضافة مقالة جديدة</h1>
+                <center><input type="text" id="articleTitle" placeholder="عنوان المقالة" style="display: block; width: 600px;height: 30px;"></center>
+            <center><textarea id="articleBody" placeholder="محتوى المقالة" style="display: block;width: 600px;height: 300px;margin-top: 30px;"></textarea></center>
+                <center><button onclick="addArticle()" style="background-color: red;color: white;width: 100px;border-radius: 20%;height: 30px;">إضافة المقالة</button></center>
             </div>
         </div>
         <div id="contact" class="page" style="display:none;background-image: url('https://tse2.mm.bing.net/th?id=OIP.jAVtSC02UZqAjZ2he3d5iQHaFW&pid=Api&P=0&h=220');background-size: cover;background-repeat: no-repeat;background-position: center;">
@@ -439,68 +429,61 @@
         </div>
     </main>
     <script src="script.js"></script>
+    <script src="server.js"></script>
     <script>
-        // Load the stored articles from localStorage when the page loads
-        window.onload = function() {
-            loadArticles();
-        };
-
         function addArticle() {
-            // Get the values from the input fields
             var title = document.getElementById('articleTitle').value;
             var body = document.getElementById('articleBody').value;
 
             if (title && body) {
-                // Create the new elements
-                var newTitle = document.createElement('h3');
-                var newBody = document.createElement('p');
+                var article = { title: title, body: body };
 
-                // Set the content of the new elements
-                newTitle.textContent = title;
-                newBody.textContent = body;
-
-                // Add the new elements to the page
-                var newArticle = document.getElementById('newArticle');
-                newArticle.appendChild(newTitle);
-                newArticle.appendChild(newBody);
-
-                // Save the article in localStorage
-                saveArticle(title, body);
+                // Send the article to the server
+                fetch('http://your-server-address:3000/articles', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(article),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    loadArticles(); // Reload articles to reflect the newly added one
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
 
                 // Clear the input fields
                 document.getElementById('articleTitle').value = '';
                 document.getElementById('articleBody').value = '';
             } else {
-                alert('من فضلك أدخل عنوان ونص المقال.');
+                alert('يرجى إدخال عنوان المقالة ومحتوى المقالة.');
             }
         }
 
-        function saveArticle(title, body) {
-            // Get the current articles from localStorage
-            var articles = JSON.parse(localStorage.getItem('articles')) || [];
-
-            // Add the new article to the list
-            articles.push({ title: title, body: body });
-
-            // Save the updated list back to localStorage
-            localStorage.setItem('articles', JSON.stringify(articles));
-        }
-
         function loadArticles() {
-            // Get the articles from localStorage
-            var articles = JSON.parse(localStorage.getItem('articles')) || [];
-
-            // Add each article to the page
-            articles.forEach(function(article) {
-                var newTitle = document.createElement('h3');
-                var newBody = document.createElement('p');
-                newTitle.textContent = article.title;
-                newBody.textContent = article.body;
-                var newArticle = document.getElementById('newArticle');
-                newArticle.appendChild(newTitle);
-                newArticle.appendChild(newBody);
-            });
+            // Fetch articles from the server
+            fetch('http://your-server-address:3000/articles')
+                .then(response => response.json())
+                .then(articles => {
+                    var newArticle = document.getElementById('newArticle');
+                    newArticle.innerHTML = ''; // Clear previous articles
+                    articles.forEach(function(article) {
+                        var newTitle = document.createElement('h3');
+                        var newBody = document.createElement('p');
+                        newTitle.textContent = article.title;
+                        newBody.textContent = article.body;
+                        newArticle.appendChild(newTitle);
+                        newArticle.appendChild(newBody);
+                    });
+                });
         }
+
+        window.onload = function() {
+            loadArticles(); // Load articles on page load
+        };
     </script>
 </body>
 </html>
