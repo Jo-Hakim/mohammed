@@ -1,60 +1,51 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const path = require("path");
-
 const app = express();
 const PORT = 3000;
 
-// Middleware
+// Middleware to handle JSON and URL-encoded bodies
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from the same directory as server.js
-app.use(express.static(__dirname));
+// Serve static files (like hakim.html and script.js)
+app.use(express.static("public"));
 
-// Route to serve the HTML file
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "hakim.html"));
-});
-
-// Path for articles JSON file
-const articlesFile = path.join(__dirname, "articles.json");
-
-// Get all articles
+// Endpoint to get the list of articles
 app.get("/articles", (req, res) => {
-  fs.readFile(articlesFile, (err, data) => {
+  fs.readFile("articles.json", (err, data) => {
     if (err) {
-      return res.status(500).send("Error reading articles.");
+      return res.status(500).json({ error: "Failed to read articles" });
     }
-
-    const articles = JSON.parse(data || "[]");
+    const articles = JSON.parse(data);
     res.json(articles);
   });
 });
 
-// Add a new article
-app.post("/add-article", (req, res) => {
-  const newArticle = req.body;
+// Endpoint to save a new article
+app.post("/articles", (req, res) => {
+  const { title, body } = req.body;
 
-  fs.readFile(articlesFile, (err, data) => {
-    if (err) {
-      return res.status(500).send("Error reading articles.");
+  // Load existing articles
+  fs.readFile("articles.json", (err, data) => {
+    let articles = [];
+    if (!err) {
+      articles = JSON.parse(data);
     }
 
-    const articles = JSON.parse(data || "[]");
-    articles.push(newArticle);
+    // Add the new article
+    articles.push({ title, body });
 
-    fs.writeFile(articlesFile, JSON.stringify(articles, null, 2), (err) => {
+    // Save the updated articles list
+    fs.writeFile("articles.json", JSON.stringify(articles), (err) => {
       if (err) {
-        return res.status(500).send("Error saving article.");
+        return res.status(500).json({ error: "Failed to save article" });
       }
-
-      res.json({ success: true });
+      res.status(201).json({ message: "Article saved successfully" });
     });
   });
 });
 
-// Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -1,0 +1,180 @@
+/* Existing styles */
+.page {
+  height: 100vh;
+}
+body {
+  font-family: "Noto Kufi Arabic", sans-serif;
+  background-color: white;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+  padding: 10px;
+  align-items: center;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  /* Allow wrapping of list items */
+}
+
+header ul li {
+  margin: 0;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+header ul li a:active {
+  background-color: red !important; /* Red color when active */
+  color: #000;
+}
+
+header ul li a:hover {
+  background-color: blue; /* Light gray on hover */
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.page {
+  display: none;
+}
+
+#whats:hover {
+  color: #25d366;
+  background-color: white;
+}
+
+#face:hover {
+  color: #1877f2;
+  background-color: white;
+  border-radius: 50%;
+}
+
+#insta:hover {
+  background: linear-gradient(to left, #f9ce34, #ee2a7b, #6228d7);
+  color: white;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+#article {
+  background-image: url("https://tse1.mm.bing.net/th?id=OIP.QPITbeQOZQqS2ZdwRjSdoAHaEp&pid=Api&P=0&h=220");
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+}
+/* Responsive design for Nokia C3 (screen width up to 77mm) */
+@media screen and (max-width: 77mm) {
+  header ul {
+    flex-direction: row; /* Ensure items are in a row */
+    gap: 5px;
+    margin: 5px;
+  }
+
+  .thelist {
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  header ul li a {
+    padding: 5px 10px;
+    font-size: 12px;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  .page {
+    display: block; /* Ensure content is visible */
+  }
+
+  iframe {
+    width: 100%;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .img-container img {
+    width: 100%; /* Ensure image fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: none; /* Prevent automatic height adjustments */
+  }
+}
+
+/* Responsive design for Poco M3 (screen width up to 600px) */
+@media screen and (max-width: 600px) {
+  .head {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  header ul {
+    flex-direction: row; /* Ensure items are in a row */
+    gap: 10px;
+    margin: 10px;
+  }
+
+  header ul li a {
+    padding: 8px 15px;
+    font-size: 14px;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  .page {
+    display: block; /* Ensure content is visible */
+  }
+
+  iframe {
+    width: 100%;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .thelist {
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  .img-container img {
+    width: 100%; /* Ensure image fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: none; /* Prevent automatic height adjustments */
+  }
+}
