@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول</title>
+  </head>
+  <body dir="rtl">
+    <form dir="rtl" name="f1">
+      يجب التأكد من أنك محمد حكيم
+      <input type="password" name="password" id="" placeholder="كلمة المرور" />
+      <button
+        onclick="if(f1.password.value=='oufa'){
+            window.location.assign('public/hakim.html');
+            return false;            
+        } else {
+            alert('خطأ');
+            return false;
+        }"
+        style="
+          background-color: blueviolet;
+          color: white;
+          height: 50px;
+          width: 70px;
+          border-radius: 25%;
+        "
+      >
+        تسجيل
+      </button>
+    </form>
+    <style>
+      body {
+        background-color: blueviolet;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      form {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 900px;
+        height: 1000px;
+        font-size: 20px;
+      }
+      input[type="password"] {
+        width: 450px;
+        height: 60px;
+        border-radius: 10%;
+      }
+    </style>
+  </body>
+</html>
