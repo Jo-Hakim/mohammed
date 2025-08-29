@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchArticles();
 });
 
-const API_URL = "https://CodeSamurai.pythonanywhere.com/articles"; // عدلها للـ PythonAnywhere link
+const API_URL = "https://yousifhakim.pythonanywhere.com/articles"; // عدلها للـ PythonAnywhere link
 
 async function fetchArticles() {
   const res = await fetch(API_URL);
