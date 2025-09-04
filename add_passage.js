@@ -14,29 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchArticles();
 });
 
-const API_URL = "https://yousifhakim.pythonanywhere.com/articles"; // عدلها للـ PythonAnywhere link
-
-async function fetchArticles() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
-  for (let i = 0; i < data.length; i++) {
-    for (let a = 0; a < i.content.length; a++) {
-      if (i.content[a] === "\n") {
-        i.content[i] = "<br>";
-      }
-    }
-  }
-  document.getElementById("ul").innerHTML += data
-    .map(
-      (a) => `
-      <hr>
-    <li><h3>${a.title}</h3>
-    <p>${a.content}</p></li>
-  `
-    )
-    .join("");
-  document.getElementById("ul").innerHTML += "<hr>";
-}
+const API_URL = "https://yousifhakim.pythonanywhere.com/articles/";
 
 async function addArticle() {
   const title = document.getElementById("title").value;
@@ -50,5 +28,3 @@ async function addArticle() {
 
   fetchArticles(); // refresh
 }
-
-fetchArticles();
