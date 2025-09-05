@@ -3,28 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const titleInput = document.getElementById("title");
   const contentInput = document.getElementById("content");
   const addButton = document.getElementById("submitBtn");
-  addButton.addEventListener("click", () => {
+  addButton.addEventListener("click", async function (e) {
+    e.preventDefault();
     if (titleInput.value && contentInput.value) {
-      addArticle();
+      await addArticle(titleInput.value, contentInput.value);
     }
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  fetchArticles();
-});
-
 const API_URL = "https://yousifhakim.pythonanywhere.com/articles/";
 
-async function addArticle() {
-  const title = document.getElementById("title").value;
-  const content = document.getElementById("content").value;
+async function addArticle(title, content) {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }),
+    });
 
-  await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title, content }),
-  });
-
-  fetchArticles(); // refresh
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else if (response.ok) {
+      window.location.href = "index.html";
+    }
+  } catch (err) {
+    console.error("Failed to add article:", err);
+    alert("Failed to add article. See console for details.");
+  }
 }

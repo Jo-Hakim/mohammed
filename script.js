@@ -4,23 +4,13 @@ async function fetchArticles() {
     throw new Error("Failed to fetch articles");
   }
   const data = await res.json();
-  for (let i = 0; i < data.length; i++) {
-    for (let a = 0; a < i.content.length; a++) {
-      if (i.content[a] === "\n") {
-        i.content[i] = "<br>";
-      }
-    }
-  }
+  data.forEach((article) => {
+    article.content = article.content.replace(/\n/g, "<br>");
+  });
+
   document.getElementById("ul").innerHTML += data
-    .map(
-      (a) => `
-      <hr>
-    <li><h3>${a.title}</h3>
-    <p>${a.content}</p></li>
-  `
-    )
+    .map((a) => `<li><h3>${a.title}</h3><p>${a.content}</p></li><hr>`)
     .join("");
-  document.getElementById("ul").innerHTML += "<hr>";
 }
 
 function showContent(id) {
@@ -42,14 +32,17 @@ function showContent(id) {
 // Show the hero section by default
 document.addEventListener("DOMContentLoaded", () => {
   showContent("home");
-  fetchArticles();
 });
 
 //adding articles
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async function () {
   const form = document.getElementById("submit-button-form");
   const articleList = document.getElementById("ul");
   const addButton = document.getElementById("submit-button");
+  const articlesPage = document.getElementById("article");
+  if (articlesPage) {
+    await fetchArticles();
+  }
   addButton.addEventListener("click", () => {
     window.location.assign("password.html");
   });
