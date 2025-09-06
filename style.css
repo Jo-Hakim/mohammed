@@ -117,22 +117,10 @@ button[type="button"]:hover {
     position: relative;
     -webkit-mask-image: none !important;
     mask-image: none !important;
-    mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
+
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
-    -webkit-mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
+
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
@@ -190,22 +178,10 @@ button[type="button"]:hover {
 
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
-    -webkit-mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
+
     -webkit-mask-image: none !important;
     mask-image: none !important;
-    mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
+
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
@@ -260,20 +236,6 @@ button[type="button"]:hover {
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
 
-    -webkit-mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
     -webkit-mask-image: none !important;
     mask-image: none !important;
     mask-repeat: no-repeat;
@@ -317,24 +279,11 @@ button[type="button"]:hover {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
-    -webkit-mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
 
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     flex-direction: row;
-    mask-image: linear-gradient(
-      to left,
-      transparent 0%,
-      black 2%,
-      black 98%,
-      transparent 100%
-    );
+
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
     -webkit-mask-image: none !important;
