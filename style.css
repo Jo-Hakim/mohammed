@@ -115,11 +115,22 @@ button[type="button"]:hover {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
-    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
-
-    mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
@@ -174,11 +185,24 @@ button[type="button"]:hover {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
-    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
+    -webkit-mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
 
-    mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
@@ -229,11 +253,25 @@ button[type="button"]:hover {
     overflow-y: hidden;
     position: relative;
     flex-direction: row;
-    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
 
-    mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
@@ -275,11 +313,24 @@ button[type="button"]:hover {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
-    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     flex-direction: row;
-    mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-image: linear-gradient(
+      to left,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
