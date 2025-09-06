@@ -17,6 +17,7 @@ body {
   background-color: #eee;
   padding: 10px;
   align-items: center;
+  overflow: visible;
 }
 
 header ul {
@@ -125,7 +126,10 @@ button[type="button"]:hover {
 
   .thelist {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   header ul li a {
@@ -155,6 +159,9 @@ button[type="button"]:hover {
     height: auto; /* Maintain aspect ratio */
     max-height: none; /* Prevent automatic height adjustments */
   }
+  .head {
+    overflow: visible;
+  }
 }
 
 /* Responsive design for Poco M3 (screen width up to 600px) */
@@ -181,6 +188,13 @@ button[type="button"]:hover {
     font-size: 12px;
   }
 
+  .thelist {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
   button[type="button"] {
     width: 90px;
     height: 40px;
@@ -199,6 +213,9 @@ button[type="button"]:hover {
     width: 80%; /* Ensure image fits within the container */
     height: auto; /* Maintain aspect ratio */
     max-height: none; /* Prevent automatic height adjustments */
+  }
+  .head {
+    overflow: visible;
   }
 }
 
@@ -220,7 +237,13 @@ button[type="button"]:hover {
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
   }
-
+  .thelist {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
   header ul li a {
     font-size: 14px;
     padding: 8px 15px;
@@ -238,6 +261,9 @@ button[type="button"]:hover {
     width: 70%; /* Ensure image fits within the container */
     height: auto; /* Maintain aspect ratio */
     max-height: none; /* Prevent automatic height adjustments */
+  }
+  .head {
+    overflow: visible;
   }
 }
 
