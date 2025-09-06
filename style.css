@@ -109,6 +109,18 @@ button[type="button"]:hover {
     flex-direction: row; /* Ensure items are in a row */
     gap: 5px;
     margin: 5px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
 
   .thelist {
@@ -149,7 +161,18 @@ button[type="button"]:hover {
 @media screen and (max-width: 400px) {
   header ul {
     gap: 5px;
-    overflow-x: scroll;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
 
   header ul li a {
@@ -182,7 +205,18 @@ button[type="button"]:hover {
 @media screen and (max-width: 600px) {
   header ul {
     gap: 10px;
-    overflow-x: scroll;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
 
   header ul li a {
@@ -208,7 +242,19 @@ button[type="button"]:hover {
 /* 📱 Tablet (up to 900px) */
 @media screen and (max-width: 900px) {
   .head {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(to left, transparent, black 40%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
 
   header ul {
