@@ -46,11 +46,11 @@ header ul li a {
 
 header ul li a:active {
   background-color: red !important; /* Red color when active */
-  color: #000;
+  color: white;
 }
 
 header ul li a:hover {
-  background-color: blue; /* Light gray on hover */
+  background-color: blue !important; /* Light gray on hover */
 }
 
 header h1 {
@@ -93,7 +93,16 @@ button[type="button"] {
   width: 90px;
   border-radius: 10px;
   margin: 0 auto;
+  font-family: "Noto Kufi Arabic", sans-serif;
 }
+button[type="button"]:hover {
+  background-color: blue;
+  transition-behavior: smooth;
+  transition-duration: 0.3s;
+  height: 55px;
+  width: 95px;
+}
+
 /* Responsive design for Nokia C3 (screen width up to 77mm) */
 @media screen and (max-width: 77mm) {
   header ul {
