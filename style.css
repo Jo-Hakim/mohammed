@@ -25,7 +25,6 @@ header ul {
   gap: 20px;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
   scrollbar-width: 0;
   /* Allow wrapping of list items */
 }
