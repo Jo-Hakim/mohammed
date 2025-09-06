@@ -162,6 +162,7 @@ button[type="button"]:hover {
   header ul {
     gap: 5px;
     flex-wrap: nowrap;
+    flex-direction: row;
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
@@ -210,6 +211,7 @@ button[type="button"]:hover {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
+    flex-direction: row;
     -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
@@ -243,7 +245,6 @@ button[type="button"]:hover {
 @media screen and (max-width: 900px) {
   .head {
     flex-wrap: nowrap;
-    flex-wrap: nowrap;
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
@@ -251,7 +252,7 @@ button[type="button"]:hover {
     -webkit-mask-image: linear-gradient(to left, transparent, black 40%);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
-
+    flex-direction: row;
     mask-image: linear-gradient(to left, transparent, black 40%);
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
@@ -259,7 +260,7 @@ button[type="button"]:hover {
 
   header ul {
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   main {
