@@ -69,3 +69,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.assign("password.html");
   });
 });
+
+const btn = document.querySelectorAll(".scrollBtn");
+btn.forEach((button) => {
+  button.addEventListener("click", function () {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
+  });
+});

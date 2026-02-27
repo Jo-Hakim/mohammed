@@ -9,12 +9,17 @@ body {
   margin: 0;
   padding: 0;
 }
+iframe {
+  border: 1px solid #ee2a7b;
+  border-radius: 9px;
+}
 .head {
   display: flex;
   justify-content: space-between;
   background-color: #eee;
   padding: 10px;
   align-items: center;
+  overflow: visible;
 }
 header ul {
   list-style: none;
@@ -43,7 +48,7 @@ header ul li a:active {
   color: white;
 }
 header ul li a:hover {
-  background-color: blue !important; /* Light gray on hover */
+  background-color: #ee2a7b !important; /* Light gray on hover */
 }
 header h1 {
   margin: 0;
@@ -53,6 +58,15 @@ main {
 }
 .page {
   display: none;
+}
+#face {
+  color: #ee2a7b;
+}
+#whats {
+  color: #ee2a7b;
+}
+#insta {
+  color: #ee2a7b;
 }
 #whats:hover {
   color: #25d366;
@@ -81,21 +95,63 @@ button[type="button"] {
   font-family: "Noto Kufi Arabic", sans-serif;
 }
 button[type="button"]:hover {
-  background-color: blue;
+  background-color: #ee2a7b;
   transition-behavior: smooth;
   transition-duration: 0.3s;
   height: 55px;
   width: 95px;
-} /* Responsive design for Nokia C3 (screen width up to 77mm) */
+}
+.scrollBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #ff0000, #ee2a7b);
+  color: white;
+
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+
+  transition: all 0.25s ease;
+}
+
+.scrollBtn:hover {
+  transform: scale(1.1);
+}
+/* Responsive design for Nokia C3 (screen width up to 77mm) */
 @media screen and (max-width: 77mm) {
   header ul {
     flex-direction: row; /* Ensure items are in a row */
     gap: 5px;
     margin: 5px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
   .thelist {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
   }
   header ul li a {
     padding: 5px 10px;
@@ -121,15 +177,45 @@ button[type="button"]:hover {
     max-height: none; /* Prevent automatic height adjustments */
   }
 } /* Responsive design for Poco M3 (screen width up to 600px) */
+
+.head {
+  overflow: visible;
+}
+
+/* Responsive design for Poco M3 (screen width up to 600px) */
+
 @media screen and (max-width: 400px) {
   header ul {
     gap: 5px;
-    overflow-x: scroll;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
   header ul li a {
     padding: 5px 10px;
     font-size: 12px;
   }
+
+  .thelist {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
   button[type="button"] {
     width: 90px;
     height: 40px;
@@ -152,31 +238,83 @@ button[type="button"]:hover {
   header ul {
     gap: 10px;
     overflow-x: scroll;
+
+    .head {
+      overflow: visible;
+    }
   }
-  header ul li a {
-    font-size: 14px;
-    padding: 8px 15px;
+
+  /* 📱 Mobile Medium (up to 600px) */
+  @media screen and (max-width: 600px) {
+    header ul {
+      gap: 10px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      position: relative;
+      flex-direction: row;
+
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;
+
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+      mask-repeat: no-repeat;
+      mask-size: 100% 100%;
+    }
+    .thelist {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    header ul li a {
+      font-size: 14px;
+      padding: 8px 15px;
+    }
+    button[type="button"] {
+      width: 100px;
+      height: 45px;
+    }
+    iframe {
+      height: 250px;
+    }
+    .img-container img {
+      width: 70%; /* Ensure image fits within the container */
+      height: auto; /* Maintain aspect ratio */
+      max-height: none; /* Prevent automatic height adjustments */
+    }
+  } /* 📱 Tablet (up to 900px) */
+
+  .head {
+    overflow: visible;
   }
-  button[type="button"] {
-    width: 100px;
-    height: 45px;
-  }
-  iframe {
-    height: 250px;
-  }
-  .img-container img {
-    width: 70%; /* Ensure image fits within the container */
-    height: auto; /* Maintain aspect ratio */
-    max-height: none; /* Prevent automatic height adjustments */
-  }
-} /* 📱 Tablet (up to 900px) */
+}
+
+/* 📱 Tablet (up to 900px) */
+
 @media screen and (max-width: 900px) {
   .head {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    flex-direction: row;
+
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
   header ul {
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   main {
     padding: 15px;
