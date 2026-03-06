@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const passageForm = document.getElementById("passage-form");
   const titleInput = document.getElementById("title");
   const contentInput = document.getElementById("content");
   const addButton = document.getElementById("submitBtn");
@@ -11,23 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const API_URL = "https://yousifhakim.pythonanywhere.com/articles/";
+const API_URL = "https://yousifhakim.pythonanywhere.com/api/articles/";
 
 async function addArticle(title, content) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, content }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        content: content,
+      }),
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    } else if (response.ok) {
-      window.location.href = "index.html";
+      throw new Error(`HTTP error: ${response.status}`);
     }
+
+    // redirect to homepage after success
+    window.location.href = "index.html";
   } catch (err) {
     console.error("Failed to add article:", err);
-    alert("Failed to add article. See console for details.");
+    alert("Failed to add article. See console.");
   }
 }
