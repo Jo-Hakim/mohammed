@@ -371,7 +371,7 @@ header ul li a:active {
   color: white;
 }
 header ul li a:hover {
-  background-color: blue !important; /* Light gray on hover */
+  background-color: #ee2a7b !important; /* Light gray on hover */
 }
 header h1 {
   margin: 0;
