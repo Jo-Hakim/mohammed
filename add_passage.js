@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   addButton.addEventListener("click", async function (e) {
     e.preventDefault();
     if (titleInput.value && contentInput.value) {
+      addButton.disabled = true; // prevent multiple clicks
       await addArticle(titleInput.value, contentInput.value);
+      addButton.disabled = false; // re-enable button after operation
     }
   });
 });
