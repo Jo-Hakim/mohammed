@@ -409,7 +409,7 @@ button[type="button"] {
   font-family: "Noto Kufi Arabic", sans-serif;
 }
 button[type="button"]:hover {
-  background-color: blue;
+  background-color: #ee2a7b;
   transition-behavior: smooth;
   transition-duration: 0.3s;
   height: 55px;
